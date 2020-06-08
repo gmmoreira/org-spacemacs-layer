@@ -81,10 +81,11 @@ Each entry is either:
   )
 
 (defun gmmoreira-org/init-org-roam ()
-  (require 'org-roam-protocol)
   (use-package org-roam
     :after org
     :hook (org-mode . org-roam-mode)
+    :config
+    (require 'org-roam-protocol)
     :custom
     (org-roam-directory "~/org/roam/")
     :bind
@@ -96,6 +97,7 @@ Each entry is either:
   )
 
 (defun gmmoreira-org/post-init-org-roam ()
+  (spacemacs/declare-prefix "or" "org-roam")
   (spacemacs/set-leader-keys
     "ori" 'org-roam-insert
     "orl" 'org-roam

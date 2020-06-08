@@ -16,7 +16,8 @@
 - [[#key-bindings][Key bindings]]
 
 * Description
-This layer adds support for something.
+  This layer adds my own configuration over =org= layer.
+  I also setup =org-roam= for my own usage.
 
 ** Features:
   - Autocomplete
