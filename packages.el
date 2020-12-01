@@ -57,54 +57,46 @@ Each entry is either:
 
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
+(defun gmmoreira-org/pre-init-org ()
+  (spacemacs|use-package-add-hook org
+    :post-config
+    (setq
+      org-modules (append org-modules '(org-habit))
+      org-capture-templates '(
+                               ("t" "Task" entry (file+headline "~/org/roam/inbox.org" "Tasks")
+                                 "* TODO %?\n %i\n")
+                               ("n" "Note" item (file+headline "~/org/roam/inbox.org" "Notes")
+                                 "- %?\n %i\n")
+                               ))))
 
 (defun gmmoreira-org/post-init-org ()
   (setq
     org-export-coding-system 'utf-8
     org-directory "~/org"
-    org-agenda-files '("~/org/" "~/org/roam/")
-    )
-  )
+    org-agenda-files '("~/org/" "~/org/roam/")))
 
 (defun gmmoreira-org/post-init-org-journal ()
+  (spacemacs/declare-prefix "orj" "journal")
   (spacemacs/set-leader-keys
     "ort" 'org-journal-open-current-journal-file
     "orjj" 'org-journal-new-entry
     "orjt" 'org-journal-new-scheduled-entry
     )
   (setq
+    org-roam-directory "~/org/roam/"
     org-journal-dir "~/org/roam/"
     org-journal-date-prefix "#+TITLE: "
     org-journal-file-format "%Y-%m-%d.org"
-    org-journal-date-format "%A, %Y-%m-%d"
-    )
-  )
-
-(defun gmmoreira-org/init-org-roam ()
-  (use-package org-roam
-    :after org
-    :hook (org-mode . org-roam-mode)
-    :config
-    (require 'org-roam-protocol)
-    :custom
-    (org-roam-directory "~/org/roam/")
-    :bind
-    ("C-c n l" . org-roam)
-    ("C-c n f" . org-roam-find-file)
-    ("C-c n i" . org-roam-insert)
-    ("C-c n g" . org-roam-graph-show)
-    ("C-c n j" . org-journal-new-entry))
-  )
+    org-journal-date-format "%A, %Y-%m-%d"))
 
 (defun gmmoreira-org/post-init-org-roam ()
   (spacemacs/declare-prefix "or" "org-roam")
+  (spacemacs/declare-prefix "orf" "files")
   (spacemacs/set-leader-keys
     "ori" 'org-roam-insert
     "orl" 'org-roam
     "org" 'org-roam-graph
     "orbb" 'org-roam-switch-to-buffer
     "orff" 'org-roam-find-file
-    "orfi" 'org-roam-jump-to-index
-    )
-  )
+    "orfi" 'org-roam-jump-to-index))
 ;;; packages.el ends here

@@ -12,6 +12,8 @@
 * Table of Contents                                        :TOC_4_gh:noexport:
 - [[#description][Description]]
   - [[#features][Features:]]
+  - [[#org-capture-templates][Org capture templates]]
+  - [[#customized-variables][Customized variables]]
 - [[#install][Install]]
 - [[#key-bindings][Key bindings]]
 
@@ -25,6 +27,18 @@
   - Refactor
   - ...
 
+** Org capture templates
+The following templates has been added:
+- t (task) :: Add a ~TODO~ entry under ~Tasks~ heading in ~inbox.org~
+- n (note) :: Add a list entry under ~Notes~ heading in ~inbox.org~
+
+** Customized variables
+| Variable         | Value                       |
+|------------------+-----------------------------|
+| org-agenda-files | ~'("~/org/" "~/org/roam/")~ |
+|                  |                             |
+
+
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =gmmoreira-org= to the existing =dotspacemacs-configuration-layers= list in this
@@ -32,9 +46,15 @@ file.
 
 * Key bindings
 
-| Key Binding | Description    |
-|-------------+----------------|
-| ~SPC x x x~ | Does thing01   |
+| Key Binding   | Description                           |
+|---------------+---------------------------------------|
+| ~SPC o r g~   | org-roam-graph                        |
+| ~SPC o r i~   | org-roam-insert                       |
+| ~SPC o r l~   | org-roam                              |
+| ~SPC o r t~   | org-journal-open-current-journal-file |
+| ~SPC o r f i~ | org-roam-jump-to-index                |
+| ~SPC o r f f~ | org-roam-find-file                    |
+| ~SPC o r j j~ | org-journal-new-entry                 |
 
 # Use GitHub URLs if you wish to link a Spacemacs documentation file or its heading.
 # Examples:
